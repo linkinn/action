@@ -19,7 +19,9 @@ async function run(): Promise<void> {
       `Last PR number ${response.data[0].number} and html url is ${response.data[0].html_url}`
     )
     const brancher = context.payload.ref
-    core.debug(brancher)
+    if (brancher.length > 0) {
+      core.debug(brancher.split('refs/heads/')[1])
+    }
     core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
 
     core.debug(new Date().toTimeString())
