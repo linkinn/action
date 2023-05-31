@@ -45,8 +45,19 @@ const wait_1 = __nccwpck_require__(5817);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
+            const octokit = (0, github_1.getOctokit)(process.env.GITHUB_TOKEN || '');
             const ms = core.getInput('milliseconds');
             core.debug(JSON.stringify(github_1.context.payload));
+            core.debug('###################################');
+            const response = yield octokit.rest.pulls.list({
+                owner: github_1.context.repo.owner,
+                repo: github_1.context.repo.repo,
+                state: 'closed',
+                base: 'main',
+                sort: 'updated',
+                direction: 'desc'
+            });
+            core.debug(JSON.stringify(response.data));
             core.debug(`Waiting ${ms} milliseconds ...`); // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
             core.debug(new Date().toTimeString());
             yield (0, wait_1.wait)(parseInt(ms, 10));
