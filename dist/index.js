@@ -47,8 +47,6 @@ function run() {
         try {
             const octokit = (0, github_1.getOctokit)(process.env.GITHUB_TOKEN || '');
             const ms = core.getInput('milliseconds');
-            core.debug(JSON.stringify(github_1.context.payload));
-            core.debug('###################################');
             const response = yield octokit.rest.pulls.list({
                 owner: github_1.context.repo.owner,
                 repo: github_1.context.repo.repo,
@@ -57,7 +55,7 @@ function run() {
                 sort: 'updated',
                 direction: 'desc'
             });
-            core.debug(JSON.stringify(response.data));
+            core.debug(`Last PR number ${response.data[0].number} and html url is ${response.data[0].html_url}`);
             core.debug(`Waiting ${ms} milliseconds ...`); // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
             core.debug(new Date().toTimeString());
             yield (0, wait_1.wait)(parseInt(ms, 10));

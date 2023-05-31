@@ -7,8 +7,6 @@ async function run(): Promise<void> {
     const octokit = getOctokit(process.env.GITHUB_TOKEN || '')
 
     const ms: string = core.getInput('milliseconds')
-    core.debug(JSON.stringify(context.payload))
-    core.debug('###################################')
     const response = await octokit.rest.pulls.list({
       owner: context.repo.owner,
       repo: context.repo.repo,
@@ -17,7 +15,9 @@ async function run(): Promise<void> {
       sort: 'updated',
       direction: 'desc'
     })
-    core.debug(JSON.stringify(response.data))
+    core.debug(
+      `Last PR number ${response.data[0].number} and html url is ${response.data[0].html_url}`
+    )
     core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
 
     core.debug(new Date().toTimeString())
