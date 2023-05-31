@@ -1,11 +1,23 @@
 import * as core from '@actions/core'
-import {context} from '@actions/github'
+import {context, getOctokit} from '@actions/github'
 import {wait} from './wait'
 
 async function run(): Promise<void> {
   try {
+    const octokit = getOctokit(process.env.GITHUB_TOKEN || '')
+
     const ms: string = core.getInput('milliseconds')
     core.debug(JSON.stringify(context.payload))
+    core.debug('###################################')
+    const response = await octokit.rest.pulls.list({
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      state: 'closed',
+      base: 'main',
+      sort: 'updated',
+      direction: 'desc'
+    })
+    core.debug(JSON.stringify(response.data))
     core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
 
     core.debug(new Date().toTimeString())
