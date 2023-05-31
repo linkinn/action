@@ -16,7 +16,7 @@ async function run(): Promise<void> {
       direction: 'desc'
     })
     core.debug(
-      `Last PR number ${response.data[0].number} and html url is ${response.data[0].html_url}`
+      `Last pr number ${response.data[0].number} and html url is ${response.data[0].html_url}`
     )
     const brancher = context.payload.ref
     if (brancher.length > 0) {

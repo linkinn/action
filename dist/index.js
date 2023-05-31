@@ -55,7 +55,7 @@ function run() {
                 sort: 'updated',
                 direction: 'desc'
             });
-            core.debug(`Last PR number ${response.data[0].number} and html url is ${response.data[0].html_url}`);
+            core.debug(`Last pr number ${response.data[0].number} and html url is ${response.data[0].html_url}`);
             const brancher = github_1.context.payload.ref;
             if (brancher.length > 0) {
                 core.debug(brancher.split('refs/heads/')[1]);
