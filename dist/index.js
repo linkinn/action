@@ -56,6 +56,7 @@ function run() {
                 direction: 'desc'
             });
             core.debug(`Last PR number ${response.data[0].number} and html url is ${response.data[0].html_url}`);
+            core.debug(github_1.context.ref);
             core.debug(`Waiting ${ms} milliseconds ...`); // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
             core.debug(new Date().toTimeString());
             yield (0, wait_1.wait)(parseInt(ms, 10));
