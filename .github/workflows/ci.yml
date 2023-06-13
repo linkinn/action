@@ -22,4 +22,7 @@ jobs:
 
       - name: Test
         run: |
-          echo ${{ steps.get_message.outputs.MESSAGE }}
+          echo ${{ steps.get_message.outputs.MESSAGE }} >> histories
+          git add histories
+          git commit -m "action: update histories logs"
+          git push origin ${{ steps.extract_branch.outputs.BRANCH_REF }}
