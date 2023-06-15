@@ -1,6 +1,13 @@
 # v
 
 ## Alterações
+- [KZ934] Update
+---
+
+
+# v
+
+## Alterações
 - [KZ9999] Update
 ---
 
