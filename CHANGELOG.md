@@ -1,3 +1,9 @@
+# v1.7.0
+
+## Alterações
+- [KZ123] Test
+---
+
 # v1.6.0
 
 ## Alterações
