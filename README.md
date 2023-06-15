@@ -3,7 +3,7 @@
 </p>
 
 # Create a JavaScript Action using TypeScript update 7
-2
+
 Use this template to bootstrap the creation of a TypeScript action.:rocket:
 
 This template includes compilation support, tests, a validation workflow, publishing, and versioning guidance.  
