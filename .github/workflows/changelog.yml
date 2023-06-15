@@ -54,4 +54,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
           branch: release/${{ steps.release_version.outputs.RELEASE_VERSION }}
-          sha: '${{ github.event.pull_request.head.sha }}'
