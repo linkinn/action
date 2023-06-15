@@ -15,29 +15,37 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Changelog
-        run: |
-          file_name="CHANGELOG.md"
+      - name: Get branch name
+        id: branch
+        run: echo "::set-output name=branch::$(git rev-parse --abbrev-ref HEAD)"
 
-          if [ -s "$file_name" ]; then
-            version=$(head -n 1 $file_name)
-            version_number=$(echo "$version" | sed 's/[^0-9.]//g')
-            version_minor_number=$(echo "$version" | awk -F '.' '{print $2}')
-            version_minor_next_version=$((version_minor_number + 1))
-            version_final=$(echo "$version_number" | sed "s/\([0-9]\.\)$version_minor_number/\1$version_minor_next_version/")
-            echo "$version_final"
-            histories_log=$(cat histories)
-            histories_new_log=$(echo "# v$version_final\n\n## Alterações\n$histories_log\n---\n\n")
-            histories_old=$(cat $file_name)
-            printf "$histories_new_log$histories_old" > $file_name
-            truncate -s 0 histories
-          else
-            printf "# v1.0.0\n\n## Alterações\n" > "$file_name"
-            cat histories >> "$file_name"
-            printf "\n---" >> "$file_name"
-            truncate -s 0 histories
-          fi
+      - name: My Conditional Step
+        # if: ${{ steps.branch.outputs.branch == 'main' }}
+        run: echo ${{ steps.branch.outputs.branch }}
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Apply php-cs-fixer changes
+      # - name: Changelog
+      #   run: |
+      #     file_name="CHANGELOG.md"
+
+      #     if [ -s "$file_name" ]; then
+      #       version=$(head -n 1 $file_name)
+      #       version_number=$(echo "$version" | sed 's/[^0-9.]//g')
+      #       version_minor_number=$(echo "$version" | awk -F '.' '{print $2}')
+      #       version_minor_next_version=$((version_minor_number + 1))
+      #       version_final=$(echo "$version_number" | sed "s/\([0-9]\.\)$version_minor_number/\1$version_minor_next_version/")
+      #       echo "$version_final"
+      #       histories_log=$(cat histories)
+      #       histories_new_log=$(echo "# v$version_final\n\n## Alterações\n$histories_log\n---\n\n")
+      #       histories_old=$(cat $file_name)
+      #       printf "$histories_new_log$histories_old" > $file_name
+      #       truncate -s 0 histories
+      #     else
+      #       printf "# v1.0.0\n\n## Alterações\n" > "$file_name"
+      #       cat histories >> "$file_name"
+      #       printf "\n---" >> "$file_name"
+      #       truncate -s 0 histories
+      #     fi
+
+      # - uses: stefanzweifel/git-auto-commit-action@v4
+      #   with:
+      #     commit_message: Apply php-cs-fixer changes
