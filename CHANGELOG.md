@@ -1,3 +1,10 @@
+# v
+
+## Alterações
+- [KZ788] Update
+---
+
+
 # v1.0.0
 
 ## Alterações
