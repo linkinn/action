@@ -1,5 +1,11 @@
-# v1.4.0\n\n## Alterações\n- [KZ11] update 1
-- [KZ22] update 2\n---\n\n # v1.3.0
+# v1.4.0
+
+## Alterações
+- [KZ11] update 1
+- [KZ22] update 2
+---
+
+# v1.3.0
 
 ## Alterações
 - [KZ934] Update
