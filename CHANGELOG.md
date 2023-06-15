@@ -1,18 +1,18 @@
-# v
+# v1.3.0
 
 ## Alterações
 - [KZ934] Update
 ---
 
 
-# v
+# v1.2.0
 
 ## Alterações
 - [KZ9999] Update
 ---
 
 
-# v
+# v1.1.0
 
 ## Alterações
 - [KZ788] Update
