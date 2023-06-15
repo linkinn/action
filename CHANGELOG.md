@@ -1,3 +1,12 @@
+# v1.5.0
+
+## Alterações
+- [KZ123] Test 1
+- [KZ123] Test 2
+- [KZ123] Test 3
+- [KZ123] Test 4
+---
+
 # v1.4.0
 
 ## Alterações
