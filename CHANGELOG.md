@@ -1,3 +1,15 @@
+# v1.6.0
+
+## Alterações
+- [KZ1234] Update
+- [KZ1234] Update
+- [KZ1234] Update
+- [KZ1234] Update
+- [KZ1234] Update
+- [KZ1234] Update
+- [KZ1234] Update
+---
+
 # v1.5.0
 
 ## Alterações
