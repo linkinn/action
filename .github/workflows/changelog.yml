@@ -28,7 +28,8 @@ jobs:
             echo "$version_final"
             histories_log=$(cat histories)
             histories_new_log=$(echo "# v$version_final\n\n## Alterações\n$histories_log\n---\n\n")
-            sed -i "1i $histories_new_log" $file_name
+            histories_old=$(cat $file_name)
+            echo "$histories_new_log $histories_old" > $file_name
             truncate -s 0 histories
           else
             printf "# v1.0.0\n\n## Alterações\n" > "$file_name"
