@@ -29,12 +29,12 @@ jobs:
             histories_log=$(cat histories)
             histories_new_log=$(echo "# v$version_final\n\n## Alterações\n$histories_log\n---\n\n")
             sed -i "1i $histories_new_log" $file_name
-            echo "" > histories
+            truncate -s 0 histories
           else
             printf "# v1.0.0\n\n## Alterações\n" > "$file_name"
             cat histories >> "$file_name"
             printf "\n---" >> "$file_name"
-            echo "" > histories
+            truncate -s 0 histories
           fi
 
       - uses: stefanzweifel/git-auto-commit-action@v4
