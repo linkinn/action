@@ -49,8 +49,7 @@ jobs:
         with:
           commit_message: Apply php-cs-fixer changes
 
-      - uses: peterjgrainger/action-create-branch@v2.2.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-        with:
-          branch: release/${{ steps.release_version.outputs.RELEASE_VERSION }}
+      - name: Create Release
+        run: |
+          git checkout -b release/${{ steps.release_version.outputs.RELEASE_VERSION }}
+          git push origin release/${{ steps.release_version.outputs.RELEASE_VERSION }}
