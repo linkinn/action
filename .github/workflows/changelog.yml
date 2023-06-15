@@ -9,19 +9,14 @@ on:
 jobs:
   changelog-update: # make sure build/ci work properly
     runs-on: ubuntu-latest
-    if: "startsWith(github.event.head_commit.message, 'Merge')"
+    if: "startsWith(github.event.head_commit.message, 'Merge') && contains(github.event.head_commit.message, 'history')"
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v3
 
-      - name: Get branch name
-        id: branch
-        run: echo "::set-output name=branch::$(git rev-parse --abbrev-ref HEAD)"
-
-      - name: My Conditional Step
-        # if: ${{ steps.branch.outputs.branch == 'main' }}
-        run: echo ${{ steps.branch.outputs.branch }}
+      - name: Get Title PR
+        run: echo "okay"
 
       # - name: Changelog
       #   run: |
