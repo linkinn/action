@@ -1,3 +1,10 @@
+# v1.9.0
+
+## Alterações
+- [KZ123] Test 2
+- [KZ123] Test 2
+---
+
 # v1.8.0
 
 ## Alterações
