@@ -1,3 +1,9 @@
+# v1.10.0
+
+## Alterações
+- [KZ1234] Atualizei o readme
+---
+
 # v1.9.0
 
 ## Alterações
