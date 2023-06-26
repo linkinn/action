@@ -1,3 +1,11 @@
+# v1.11.0
+
+## Alterações
+- test
+- test1
+- test3
+---
+
 # v1.10.0
 
 ## Alterações
